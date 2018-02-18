@@ -1,0 +1,10 @@
+avrdude6.1 instead of 6.2
+
+#HUNK2 failed 
+
+after dpkg-buildpackage -uc -us :
+dpkg-source: error: aborting due to unexpected upstream changes, see /tmp/avrdude_6.1-2.diff.BBc5nV
+dpkg-buildpackage: error: dpkg-source -b avrdude-6.1 gave error exit status 2
+
+
+

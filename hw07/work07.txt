@@ -1,0 +1,53 @@
+Walter Rasmussen
+
+1.
+	TARGET=thebest
+	CGLAGS= -g -Wall
+	OBJS= trump.o spicer.o kelyanne.o pence.o
+	CC=gcc
+	
+	all: $(TARGET)
+
+	$(TARGET): $(OBJS)
+		$(CC) -o $(TARGET) $(OBJS)
+
+	clean:
+		rm -f $(TARGET) $(OBJS)
+
+
+2.
+	
+
+
+5.
+	(a) dw
+	
+	(b) sed -n '20,30p' /usr/local/project/from/lleh/morse
+
+	(c) 
+
+	(d) chmod -R g=rx,o=rx ./*
+
+	(e) ps -el | grep '\ S' | wc -l
+
+	(f) sudo apt-get update
+	    apt-cache search Atari
+	    sudo apt-get instal stela
+	    
+
+
+6.
+	mv E:/start_here /home/pi/hunt/start_here
+	./start_here
+	ls
+	file files.tar.bz2
+	tar -xf files.tar.bz2
+	ls -a
+	cd .\ \ _
+	ls
+	file next
+	chmod 777 next
+	./next
+	./next walter.rasmussen@maine.edu *[0-9]
+
+	Message: MICHIGAN

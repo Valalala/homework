@@ -1,0 +1,9 @@
+./memtest 1
+./memtest 10
+./memtest 100
+./memtest 1000
+./memtest 10000
+./memtest 100000
+./memtest 1000000
+./memtest 10000000
+./memtest 100000000
