@@ -1,0 +1,36 @@
+1. 
+Network(DDN)	IP(DDN)		Netmask(CIDR)	Broadcast(DDN)
+a. 		10.129.4.5	/13		b.
+172.81.32.0	c.		d.		172.81.47.255
+
+/13 == 11111111.11111000.00000000.00000000 
+
+a. 10.129.4.5 & /13 = 10.128.0.0
+
+b. 10.129.4.5 | ~(/13) = 10.135.255.255
+
+c. Any address between 172.81.32.0 and 172.81.47.255 inclusive. 
+
+d.	172.81.32.0   == 10101100.01010001.00100000.00000000
+	172.81.47.255 == 10101100.01010001.00101111.11111111
+	
+~(172.81.32.0 ^ 172.81.47.255) = 11111111.11111111.11110000.00000000 = /20
+
+Network(DDN)	IP(DDN)		Netmask(CIDR)	Broadcast(DDN)
+10.128.0.0 	10.129.4.5	/13		10.135.255.255
+172.81.32.0	172.81.32.1	/20		172.81.47.255
+
+2. 
+
+
+8.	sudo apt update
+	apt search american
+	sudo apt install wamerican-large
+
+9. Take as much indormation as you can about the incident(when you discovered it, what you discovered) to your superviser. 
+
+10. enscript -PPDF --header='ECE 331|Exam 02|Walter Rasmussen' ans.txt
+
+
+
+
