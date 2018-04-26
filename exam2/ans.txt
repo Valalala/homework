@@ -1,3 +1,4 @@
+
 1. 
 Network(DDN)	IP(DDN)		Netmask(CIDR)	Broadcast(DDN)
 a. 		10.129.4.5	/13		b.
@@ -20,7 +21,38 @@ Network(DDN)	IP(DDN)		Netmask(CIDR)	Broadcast(DDN)
 10.128.0.0 	10.129.4.5	/13		10.135.255.255
 172.81.32.0	172.81.32.1	/20		172.81.47.255
 
+
 2. 
+a. https://www.geeksforgeeks.org/socket-programming-cc/
+
+b.
+
+
+
+3. "route -n" copy paste
+Elessar
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         1.2.4.100   	0.0.0.0         UG    303    0        0 eth1
+10.0.0.0   	0.0.0.0		255.254.0.0   	U     303    0        0 eth0
+141.114.3.0	0.0.0.0		255.255.255.192	U     303    0        0 eth2
+1.2.0.0		0.0.0.0 	255.255.128.0	U     303    0        0 eth1
+
+Legolas
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         141.114.3.10    0.0.0.0         UG    303    0        0 eth0
+141.114.3.0	0.0.0.0         255.255.255.192 U     303    0        0 eth0
+
+
+4.	IP Source	IP Destination	MAC Source		MAC Destination
+Frodo	10.1.2.3	141.114.3.3	00:00:00:00:00:11	55:00:00:00:00:00
+Elessar	10.1.2.3	141.114.3.3	66:00:00:00:00:00	00:00:00:00:00:22
+Legolas	
+
+
+5. 	IP Source	IP Destination	MAC Source		MAC Destination
+Legolas	141.114.3.3	1.2.4.100	00:00:00:00:00:22	66:00:00:00:00:00
+Elessar	141.114.3.3	1.2.4.100	77:00:00:00:00:00	FF:00:00:00:00:00
+Gandalf
 
 
 6.
@@ -39,8 +71,9 @@ function makeTable($w, $h){
 }
 
 
-7.
-select date, time, price from bitcoin where price=MAX(price) and (date between #01/03/2018# and #31/03/2018#);
+7. Assuming date column is in yyyy/mm/dd format and chronological order.
+select date, time, MAX(price) from bicoin where date between datetime('now','-1 month') and datetime('now');
+
 
 8.
 a.	sudo apt update
@@ -76,7 +109,8 @@ foreach $key (@histkeys){
 close(IN); # close file
 
 
-9. Take as much indormation as you can about the incident(when you discovered it, what you discovered) to your superviser. 
+9. Take as much information as you can about the incident(when you discovered it, what you discovered) to your superviser. Discuss security: The situation is time sensitive so find a superviser as quickly as possible. Discuss ethics: You are responsible for informing someone, but you do not have the authority to take action. (There is a small chance that harry just has a terrible name convention.)
+
 
 10. enscript -PPDF --header='ECE 331|Exam 02|Walter Rasmussen' ans.txt
 
