@@ -1,7 +1,8 @@
 //Walter Rasmussen - Spring 2018
 // Webpage fetch using tcp
 //tcp.c
-//https://gist.github.com/nolim1t/126991
+// Code taken from nolim1t on github
+// https://gist.github.com/nolim1t/126991
 
 #include <stdio.h>
 #include <string.h>
@@ -18,24 +19,35 @@
 int socket_connect(char *host, in_port_t port){
 	struct hostent *hp;
 	struct sockaddr_in addr;
-	int on = 1, sock;     
+	int on = 1, sock;  
+	//int sock;
 
 	if((hp = gethostbyname(host)) == NULL){
 		herror("gethostbyname");
 		exit(1);
 	}
-	bcopy(hp->h_addr, &addr.sin_addr, hp->h_length);
+	//bcopy(hp->h_addr, &addr.sin_addr, hp->h_length);
+	memset(&addr, '0', sizeof(addr));
+
 	addr.sin_port = htons(port);
 	addr.sin_family = AF_INET;
-	sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+	
+	//if(inet_pton(AF_INET, hp->h_addr_list[0], &addr.sin_addr)<=0) {
+	//	printf("\nInvalid address/ Address not supported \n");
+	//	return -1;
+	//}
+	//addr.sin_addr.s_addr = *(long*)(hp->h_addr_list[0]);
+	//addr.sin_addr = hp->h_addr_list[0];
+	sock = socket(AF_INET, SOCK_STREAM, 0);
 	setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (const char *)&on, sizeof(int));
 
-	if(sock == -1){
+	if(sock < 0){
 		perror("setsockopt");
 		exit(1);
 	}
 	
-	if(connect(sock, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) == -1){
+	//if(connect(sock, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) < 0){
+	if(connect(sock, (struct sockaddr *)&addr, sizeof(addr)) < 0){
 		perror("connect");
 		exit(1);
 
@@ -44,6 +56,7 @@ int socket_connect(char *host, in_port_t port){
 }
  
 #define BUFFER_SIZE 1024
+#define REQUEST "GET /index.html HTTP/1.1\\r\\nhost: myhost\\r\\n\\r\\n"
 
 int main(int argc, char *argv[]){
 	int fd;
@@ -55,11 +68,11 @@ int main(int argc, char *argv[]){
 	}
        
 	fd = socket_connect(argv[1], atoi(argv[2])); 
-	write(fd, "GET /\r\n", strlen("GET /\r\n")); // write(fd, char[]*, len);  
+	write(fd, REQUEST, strlen(REQUEST)); // write(fd, char[]*, len);  
 	bzero(buffer, BUFFER_SIZE);
 	
 	while(read(fd, buffer, BUFFER_SIZE - 1) != 0){
-		fprintf(stderr, "%s", buffer);
+		printf("%s\n", buffer);
 		bzero(buffer, BUFFER_SIZE);
 	}
 
